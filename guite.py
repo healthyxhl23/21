@@ -32,6 +32,7 @@ def convert_card(card: dict) -> str:
     suit = card['suit'].lower()
     rank = str(card['rank']).lower()
     image = f'PNG-cards-1.3/{rank}_of_{suit}.png'
+
     return image
 
 #update hand values

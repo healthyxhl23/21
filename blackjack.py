@@ -108,57 +108,6 @@ class Blackjack:
         self.deal_card(self.player_hand)
 
    
-    # def play_game(self):
-
-    #     # 2 cards per player to start
-    #     self.deal_card(self.player_hand)
-    #     self.deal_card(self.dealer_hand)
-    #     self.deal_card(self.player_hand)
-    #     self.deal_card(self.dealer_hand)
-
-    #     # Show hands
-    #     # hide one of the dealer's cards
-    #     # print(f'Your hand: {self.player_hand}')
-        
-    #     #dealer randomly choose which card to show
-    #     num = random.randint(0, 1)
-    #     print(f"Dealer's hand: [[***], {self.dealer_hand[num]}]")
-
-
-    #     # Player's turn
-    #     while True:
-            
-    #         player_value = self.calculate_hand_value(self.player_hand)
-    #         print(f'Your Hand: {self.player_hand}\nHand value: {player_value}')
-
-    #         #bust over 21
-    #         if player_value > 21:
-    #             print('Bust! Game over')
-    #             return False
-            
-    #         #ask again if not hit or stand
-    #         hit = input("Hit or Stand? ").lower()
-    #         if hit == 'hit':
-    #             self.deal_card(self.player_hand)
-    #         elif hit == 'stand':
-    #             break
-            
-
-    #     # Dealer's turn
-    #     #dealer has to hit if under 17
-    #     #can't have over 5 cards
-        
-    #     while self.calculate_hand_value(self.dealer_hand) < 17 and len(self.dealer_hand) < 6:
-    #         self.deal_card(self.dealer_hand)
-
-    #     #if dealer value over 21, bust
-    #     dealer_value = self.calculate_hand_value(self.dealer_hand)
-        
-    #     print(f"Dealer's Hand: {self.dealer_hand}\nDealer's Hand value: {dealer_value}")
-
-    #     return self.who_wins(player_value, dealer_value)
-        
-
 
 def main():
     pass

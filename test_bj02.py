@@ -3,10 +3,10 @@
 #Final Project
 #Herry Li & Nengjui Yu
 
-#tests of demo version 
+#tests of original version 
 
 import unittest
-from blackjack import Blackjack
+from blackjack02 import Blackjack
 class Test_BlackJack(unittest.TestCase):
     def test_create_deck(self):
 
@@ -96,8 +96,8 @@ class Test_BlackJack(unittest.TestCase):
 
     def test_who_wins(self):
         game = Blackjack()
-        self.assertEqual(game.who_wins(21,10), 'Dealer has 10 \nYou Win')
-        self.assertEqual(game.who_wins(1, 10), 'Dealer has 10 \nYou Lose')
+        self.assertEqual(game.who_wins(21,10), True)
+        self.assertEqual(game.who_wins(1, 10), False)
         self.assertEqual(game.who_wins(10, 10), 'Tie')
 
 
@@ -106,7 +106,7 @@ class Test_BlackJack(unittest.TestCase):
         d_hand = [{'suit': 'Hearts', 'rank': 'Ace'},{'suit': 'Hearts', 'rank': 10},{'suit': 'Hearts', 'rank': 'Jack'}]
         p = game.calculate_hand_value(p_hand) #16
         d = game.calculate_hand_value(d_hand) #21
-        self.assertEqual(game.who_wins(p, d), 'Dealer has 21 \nYou Lose')
+        self.assertEqual(game.who_wins(p, d), False)
 
 
         game = Blackjack()
@@ -114,7 +114,7 @@ class Test_BlackJack(unittest.TestCase):
         d_hand = [{'suit': 'Hearts', 'rank': 10},{'suit': 'Hearts', 'rank': 10},{'suit': 'Hearts', 'rank': 'Jack'}]
         p = game.calculate_hand_value(p_hand) #16
         d = game.calculate_hand_value(d_hand) #30
-        self.assertEqual(game.who_wins(p, d), 'Dealer has 30 \nYou Win')
+        self.assertEqual(game.who_wins(p, d), True)
 
 
         game = Blackjack()
@@ -124,32 +124,7 @@ class Test_BlackJack(unittest.TestCase):
         d = game.calculate_hand_value(d_hand) 
         self.assertEqual(p, 30)
         self.assertEqual(d, 21)
-        self.assertEqual(game.who_wins(p, d), 'Dealer has 21 \nYou Lose')
+        self.assertEqual(game.who_wins(p, d), False)
 
-
-    def test_start_game(self):
-        game = Blackjack()
-        game.start_game()
-        self.assertEqual(len(game.deck), 48)
-        self.assertEqual(len(game.player_hand), 2)
-        self.assertEqual(len(game.dealer_hand), 2)
-
-
-    def test_hit(self):
-        game = Blackjack()
-        game.start_game()
-        game.hit()
-        self.assertEqual(len(game.deck), 46)
-        game.hit()
-        self.assertEqual(len(game.deck), 44)
-
-        game = Blackjack()
-        count = 0
-        while len(game.deck) > 0:
-            game.hit()
-            count += 1
-        self.assertEqual(count, 26)
-        self.assertEqual(len(game.dealer_hand), 26)
-        self.assertEqual(len(game.player_hand), 26)
 
 unittest.main()
